@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+old schema: http://www.seals-project.eu/schemas/2010-08-15/ToolPackageDescriptor.xsd
+new schema: http://www.seals-project.eu/resources/res/tools/bundle/v1
+-->
+
+<ns:package 	  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:ns="http://www.seals-project.eu/resources/res/tools/bundle/v1"
+	id="GMap" 
+	version="1.0">
+	<ns:description>GMap: Combining Sum-Product Network and Noisy-Or Model.</ns:description>
+	<ns:endorsement>
+		<ns:copyright>Academy of Mathematics and Systems Science Chinese Academy of Sciences</ns:copyright>
+		<ns:license>Specification of license</ns:license>
+	</ns:endorsement>
+	<ns:wrapper>
+		<ns:management>
+			<ns:deploy>
+				<ns:executable xsi:type="ns:ShellScript">
+					<ns:script>deploy.bat</ns:script>
+					<ns:error-log>deploy-error.log</ns:error-log>
+				</ns:executable>
+			</ns:deploy>
+			<ns:start>
+				<ns:executable xsi:type="ns:ShellScript">
+					<ns:script>start.bat</ns:script>
+					<ns:error-log>start-error.log</ns:error-log>
+				</ns:executable>
+			</ns:start>
+			<ns:stop>
+				<ns:executable xsi:type="ns:ShellScript">
+					<ns:script>stop.bat</ns:script>
+					<ns:error-log>stop-error.log</ns:error-log>
+				</ns:executable>
+			</ns:stop>
+			<ns:undeploy>
+				<ns:executable xsi:type="ns:ShellScript">
+					<ns:script>undeploy.bat</ns:script>
+					<ns:error-log>undeploy-error.log</ns:error-log>
+				</ns:executable>
+			</ns:undeploy>
+		</ns:management>
+		<ns:bridge>
+			<!-- references relative to bin folder -->
+			<ns:class>Actions.MatcherBridge</ns:class>
+			<ns:jar>GMap-bridge.jar</ns:jar>
+			<ns:dependencies>
+				<ns:lib>lib/edu.mit.jwi_2.1.4.jar</ns:lib>
+				<ns:lib>lib/edu.sussex.nlp.jws.beta.11.jar</ns:lib>
+				<ns:lib>lib/GMap.jar</ns:lib>
+				<ns:lib>lib/HermiT_1.3.6.jar</ns:lib>
+				<ns:lib>lib/org.semanticweb.elk.jar</ns:lib>
+				<ns:lib>lib/stanford-postagger.jar</ns:lib>
+			</ns:dependencies>
+		</ns:bridge>
+	</ns:wrapper>
+</ns:package>
+
